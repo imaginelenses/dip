@@ -74,10 +74,10 @@ int main(int argc, char *argv[]) {
     // Go back to start of info header
     fseek(inPtr, sizeof(BITMAPFILEHEADER), SEEK_SET);
 
-
+    // Log transform (C = 50)     
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
-            image[i][j].rgbtBlue = 50 * pow(image[i][j].rgbtBlue);
+            image[i][j].rgbtBlue = 50 * log(1 + image[i][j].rgbtBlue);
             image[i][j].rgbtGreen = 50 * log(1 + image[i][j].rgbtGreen);
             image[i][j].rgbtRed = 50 * log(1 + image[i][j].rgbtRed);
         }
